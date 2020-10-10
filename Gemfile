@@ -1,19 +1,24 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 
 gemspec
 
-gem 'rails', '~>5.1.0'
+gem 'bootsnap', require: false
+gem 'puma'
+gem 'rails', '< 6.0.0'
+gem 'rake'
+gem 'sprockets', '< 4.0.0'
 gem 'sqlite3'
 gem 'yard'
-gem 'rake'
 
 group :test do
-  gem 'rspec'
-  gem 'rspec-rails'
   gem 'capybara'
   gem 'capybara-selenium'
+  gem 'rspec'
+  gem 'rspec-rails'
   gem 'selenium-webdriver'
-  gem 'chromedriver-helper'
+  gem 'webdrivers'
 end
 
 group :development do
@@ -21,6 +26,8 @@ group :development do
 end
 
 group :development, :test do
+  gem 'cm_shared', path: File.expand_path('../../cm_shared', __dir__)
   gem 'pry-rails'
-  gem 'netzke-core'
+  # gem 'netzke-core'
+  gem 'netzke-core', path: File.expand_path('../netzke-core', __dir__)
 end
